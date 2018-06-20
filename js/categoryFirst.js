@@ -21,6 +21,28 @@ $(function () {
     }
     getData();
   })
+  $('#saveBtn').on('click', function () {
+    var categoryName = $.trim($('#categoryName').val());
+    if (!categoryName) {
+      alert('请输入分类名称');
+      return;
+    }
+    $.ajax({
+      type: 'post',
+      url: `${APP.A}/category/addTopCategory`,
+      data: {categoryName},
+      success: function (r) {
+        if(r.success) {
+          alert('添加成功');
+          setTimeout(function () {
+            location.reload()
+          }, 500)
+        } else {
+          alert(r.message,'添加失败');
+        }
+      }
+    })
+  })
 })
 function getData () {
   $.ajax({
