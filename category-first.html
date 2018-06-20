@@ -72,16 +72,7 @@
 	        </div>
 	        <div class="body">
 	        	<button class="operation btn btn-primary" data-toggle="modal" data-target=".category-first">添加分类</button>
-	        	<table class="table table-bordered">
-	        		<tr>
-	        			<th>分类的编号</th>
-	        			<th>分类名称</th>
-	        		</tr>
-	        		<tr>
-	        			<td>1</td>
-	        			<td>运动馆</td>
-	        		</tr>
-	        	</table>
+	        	<table class="table table-bordered" id="categoryFirstBox"></table>
 	        	<div class="btn-group page">
 	        		<div class="btn btn-default">上一页</div>
 	        		<div class="btn btn-default">下一页</div>
@@ -109,8 +100,17 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/html" id="categoryTpl">
-		
+	<script type="text/html" id="categoryFirstTpl">
+		<tr>
+			<th>分类的编号</th>
+			<th>分类名称</th>
+		</tr>
+		<% for (var i = 0; i < rows.length; i++) { %>
+			<tr>
+				<td><%=rows[i].id%></td>
+				<td><%=rows[i].categoryName%></td>
+			</tr>
+		<% } %>
 	</script>
 </body>
 </html>
