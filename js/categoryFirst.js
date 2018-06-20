@@ -8,13 +8,16 @@ $(function () {
     if (page < 1) {
       page = 1;
       alert('已经是第一页了');
+      return;
     }
+    getData();
   })
   $('#next').on('click', function () {
     page++;
     if (page > totalPage) {
       page = totalPage;
       alert('没有更多数据了')
+      return;
     }
     getData();
   })
