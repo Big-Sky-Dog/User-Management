@@ -26,13 +26,11 @@ $(function () {
       $('#categoryFirstBox').html(html);
     }
   })
-  // var brandLogo = '';
+  var brandLogo = '';
   // $('#fileUpload').fileupload({
   //   dataType: 'josn',
   //   done: function (e, data) {
   //     brandLogo = data._response.result.picAddr;
-  //     var imgUrl = APP.A+ data._response.result.picAddr;
-  //     $('#imgPreview').attr('src', imgUrl);
   //   }
   // })
   $('#fileUpload').change(() => {
@@ -40,6 +38,11 @@ $(function () {
     fr.readAsDataURL(this.files[0]);
     fr.onload = () => {
       $('#imgPreview').attr('src', fr.result);
+    }
+  }).fileupload({
+    dataType: 'josn',
+    done: function (e, data) {
+      brandLogo = data._response.result.picAddr;
     }
   })
   $('#save').on('click', function () {
