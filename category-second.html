@@ -95,7 +95,7 @@
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-						<select class="form-control" id="lisBox">
+						<select class="form-control" id="categoryFirstBox">
 
 						</select>
 					</div>
@@ -132,10 +132,10 @@
 			</tr>
 		<% } %>
 	</script>
-	<script type="lisTpl">
+	<script type="text/html" id="categoryFirstTpl">
 		<option>请选择一级分类</option>
 		<% for (var i = 0; i < rows.length; i++) { %>
-			<option value="<%=rows[i].id%>"><%=rows[i].categoryName%></option>
+		<option value="<%=rows[i].id%>"><%=rows[i].categoryName%></option>
 		<% } %>
 	</script>
 </body>
