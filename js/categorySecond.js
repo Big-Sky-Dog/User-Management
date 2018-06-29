@@ -19,25 +19,32 @@ $(function () {
     url: `${APP.A}/category/queryTopCategoryPaging`,
     data: {
       page: 1,
-      pageSzie: 999999999
+      pageSize: 999999999
     },
     success: function (r) {
-      var html = template('lisTlp', r);
-      $('#lisBox').html(html);
+      var html = template('categoryFirstTpl', r);
+      $('#categoryFirstBox').html(html);
     }
   })
-  var brandLogo = '';
-  $('#fileUpload').fileupload({
-    dataType: 'josn',
-    done: function (e, data) {
-      brandLogo = data._response.result.picAddr;
-      var imgUrl = APP.A+ data._response.result.picAddr;
-      $('#imgPreview').attr('src', imgUrl);
+  // var brandLogo = '';
+  // $('#fileUpload').fileupload({
+  //   dataType: 'josn',
+  //   done: function (e, data) {
+  //     brandLogo = data._response.result.picAddr;
+  //     var imgUrl = APP.A+ data._response.result.picAddr;
+  //     $('#imgPreview').attr('src', imgUrl);
+  //   }
+  // })
+  $('#fileUpload').change(() => {
+    var fr = new FileReader();
+    fr.readAsDataURL(this.files[0]);
+    fr.onload = () => {
+      $('#imgPreview').attr('src', fr.result);
     }
   })
-  $('save').on('click', function () {
+  $('#save').on('click', function () {
     var brandName = $('#brandName').val();
-    var categoryId = $('#lisBox').val();
+    var categoryId = $('#categoryFirstBox').val();
     var hot = 1;
     $.ajax({
       type: 'post',
@@ -57,5 +64,4 @@ $(function () {
       }
     })
   })
-
 })
